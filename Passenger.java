@@ -57,6 +57,5 @@ public class Passenger {
         C.boardCar(newCar);
         D.boardCar(newCar);
         E.boardCar(newCar);
-        
     } */
 }

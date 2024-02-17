@@ -10,12 +10,12 @@ public class Train {
      * @param MaxCapacity max capacity
      */
     public Train(FuelType fuelType, double fuelCapacity, int nCars, int passengerCapacity){
+        this.Engine = new Engine(fuelType, fuelCapacity, fuelCapacity);
         this.Engine.Fuel = fuelType;
         this.Engine.MaxFuelLevel = fuelCapacity;
-        ArrayList<Car> CarsAttached = new ArrayList<Car>(nCars);
-        this.CarsAttached = CarsAttached;
+        this.CarsAttached = new ArrayList<Car>(nCars);
         for (int i = 0; i < nCars; i++){
-            CarsAttached.get(i).MaxCapacity = passengerCapacity / nCars;
+            this.CarsAttached.add(new Car(passengerCapacity / nCars));
         }
     }
 
@@ -37,7 +37,7 @@ public class Train {
 
     /**
      * Getter for the maximum total capacity across all Cars
-     * @return the total capacity
+     * @return the total passenger capacity
      */
     public int getMaxCapacity(){
         int TotalCapacity = 0;
@@ -65,8 +65,14 @@ public class Train {
         }
     }
 
-    /*
+    
     public static void main(String[] args) {
         Train newTrain = new Train(FuelType.ELECTRIC, 200, 6, 30);
-    } */
+        Passenger A = new Passenger("A");
+        Passenger B = new Passenger("B");
+        newTrain.getCar(0).addPassenger(A);
+        System.out.println(newTrain.seatsRemaining());
+        newTrain.CarsAttached.get(1).addPassenger(B);
+        System.out.println(newTrain.seatsRemaining());
+    } 
 }

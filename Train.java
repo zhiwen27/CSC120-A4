@@ -74,6 +74,7 @@ public class Train {
         newTrain.getCar(0).addPassenger(A);
         System.out.println(newTrain.seatsRemaining());
         newTrain.CarsAttached.get(1).addPassenger(B);
+        newTrain.CarsAttached.get(0).removePassenger(A);
         System.out.println(newTrain.seatsRemaining());
     } */
 }

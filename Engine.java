@@ -1,21 +1,21 @@
 public class Engine {
 
-    FuelType Fuel;
-    private double CurrentFuelLevel;
-    double MaxFuelLevel;
+    private FuelType fuel;
+    private double currentFuelLevel;
+    private double maxFuelLevel;
     // Define the public double rate which represents the hourly fuel consumption
-    private double Rate;
+    private double rate;
 
     /**
      * Constructer for the Engine class
-     * @param Fuel fueltype
-     * @param CurrentFuelLevel current fuel level
-     * @param MaxFuelLevel maximum fuel level
+     * @param fuel fueltype
+     * @param currentFuelLevel current fuel level
+     * @param maxFuelLevel maximum fuel level
      */
-    public Engine(FuelType Fuel, double CurrentFuelLevel, double MaxFuelLevel){
-        this.Fuel = Fuel;
-        this.CurrentFuelLevel = CurrentFuelLevel;
-        this.MaxFuelLevel = MaxFuelLevel;
+    public Engine(FuelType fuel, double currentFuelLevel, double maxFuelLevel){
+        this.fuel = fuel;
+        this.currentFuelLevel = currentFuelLevel;
+        this.maxFuelLevel = maxFuelLevel;
     }
 
     /**
@@ -23,7 +23,7 @@ public class Engine {
      * @param newFuelLevel updated fuel level
      */
     public void setCurrentFuel(double newFuelLevel){
-        this.CurrentFuelLevel = newFuelLevel;
+        this.currentFuelLevel = newFuelLevel;
     }
 
     /**
@@ -31,7 +31,15 @@ public class Engine {
      * @return current fuel level
      */
     public double getCurrentFuel(){
-        return this.CurrentFuelLevel;
+        return this.currentFuelLevel;
+    }
+
+    /**
+     * Setter for max fuel level
+     * @return max fuel level
+     */
+    public void setMaxFuel(double d){
+        this.maxFuelLevel = d;
     }
 
     /**
@@ -39,7 +47,7 @@ public class Engine {
      * @param newRate set (arbitrary) consumption rate
      */
     public void setRate(double newRate){
-        this.Rate = newRate;
+        this.rate = newRate;
     }
 
     /**
@@ -47,7 +55,15 @@ public class Engine {
      * @return return the consumption rate
      */
     public double getRate(){
-        return this.Rate;
+        return this.rate;
+    }
+
+    /**
+     * Setter for the fuel type
+     * @param f the type of the fuel you want
+    */
+    public void setFuelType(FuelType f){
+        this.fuel = f;
     }
     
     /**
@@ -55,7 +71,7 @@ public class Engine {
      * @return set the current fuel level to the maximum fuel value and return
      */
     public void refuel(){
-        this.CurrentFuelLevel = this.MaxFuelLevel;
+        this.currentFuelLevel = this.maxFuelLevel;
     }
 
     /**
@@ -63,9 +79,9 @@ public class Engine {
      * @return return true if the remain fuel is above 0, otherwise, return false
      */
     public boolean go(){
-        if (this.CurrentFuelLevel > 0){
-            System.err.println("The remaining fuel level of the engine is" + this.CurrentFuelLevel);
-            this.CurrentFuelLevel -= this.Rate;
+        if (this.currentFuelLevel > 0){
+            System.err.println("The remaining fuel level of the engine is" + this.currentFuelLevel);
+            this.currentFuelLevel -= this.rate;
             return true;
         }
         else{

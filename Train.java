@@ -1,30 +1,32 @@
 import java.util.ArrayList;
 public class Train {
 
-    private Engine Engine;
-    private ArrayList<Car> CarsAttached;
+    private final Engine engine;
+    private ArrayList<Car> carsAttached;
 
     /**
      * Constructer for the Train class
-     * @param PassengersOnboard passengers currently on board
-     * @param MaxCapacity max capacity
+     * @param fuelType the type of the fuel
+     * @param fuelCapacity the capacity of the fuel
+     * @param nCars the number of cars attached
+     * @param passengerCapacity the capacity of passengers
      */
     public Train(FuelType fuelType, double fuelCapacity, int nCars, int passengerCapacity){
-        this.Engine = new Engine(fuelType, fuelCapacity, fuelCapacity);
-        this.Engine.Fuel = fuelType;
-        this.Engine.MaxFuelLevel = fuelCapacity;
-        this.CarsAttached = new ArrayList<Car>(nCars);
+        this.engine = new Engine(fuelType, fuelCapacity, fuelCapacity);
+        this.engine.setFuelType(fuelType);
+        this.engine.setMaxFuel(fuelCapacity);;
+        this.carsAttached = new ArrayList<Car>(nCars);
         for (int i = 0; i < nCars; i++){
-            this.CarsAttached.add(new Car(passengerCapacity / nCars));
+            this.carsAttached.add(new Car(passengerCapacity / nCars));
         }
     }
 
     /**
-     * Getter for the engine
-     * @return return engine
+     * Getter for the Engine
+     * @return return Engine
      */
     public Engine getEngine(){
-        return this.Engine;
+        return this.engine;
     }
 
     /**
@@ -32,7 +34,7 @@ public class Train {
      * @return return the ith car
      */
     public Car getCar(int i){
-        return this.CarsAttached.get(i);
+        return this.carsAttached.get(i);
     }
 
     /**
@@ -41,8 +43,8 @@ public class Train {
      */
     public int getMaxCapacity(){
         int TotalCapacity = 0;
-        for (int i = 0; i < this.CarsAttached.size(); i++){
-            TotalCapacity += this.CarsAttached.get(i).MaxCapacity;
+        for (int i = 0; i < this.carsAttached.size(); i++){
+            TotalCapacity += this.carsAttached.get(i).getMaxCapacity();
         }
         return TotalCapacity;
     }
@@ -53,15 +55,15 @@ public class Train {
      */
     public int seatsRemaining(){
         int SeatsRemaining = 0;
-        for (int i = 0; i < this.CarsAttached.size(); i++){
-            SeatsRemaining += this.CarsAttached.get(i).seatsRemaining();
+        for (int i = 0; i < this.carsAttached.size(); i++){
+            SeatsRemaining += this.carsAttached.get(i).seatsRemaining();
         }
         return SeatsRemaining;
     }
 
     public void printManifest(){
-        for (int i = 0; i < this.CarsAttached.size(); i++){
-            this.CarsAttached.get(i).printManifest();
+        for (int i = 0; i < this.carsAttached.size(); i++){
+            this.carsAttached.get(i).printManifest();
         }
     }
 
@@ -73,8 +75,8 @@ public class Train {
         Passenger B = new Passenger("B");
         newTrain.getCar(0).addPassenger(A);
         System.out.println(newTrain.seatsRemaining());
-        newTrain.CarsAttached.get(1).addPassenger(B);
-        newTrain.CarsAttached.get(0).removePassenger(A);
+        newTrain.carsAttached.get(1).addPassenger(B);
+        newTrain.carsAttached.get(0).removePassenger(A);
         System.out.println(newTrain.seatsRemaining());
     } */
 }

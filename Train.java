@@ -68,7 +68,6 @@ public class Train {
     }
 
     // sample test
-    /*
     public static void main(String[] args) {
         Train newTrain = new Train(FuelType.ELECTRIC, 200, 6, 30);
         Passenger A = new Passenger("A");
@@ -76,7 +75,8 @@ public class Train {
         newTrain.getCar(0).addPassenger(A);
         System.out.println(newTrain.seatsRemaining());
         newTrain.carsAttached.get(1).addPassenger(B);
+        newTrain.carsAttached.get(1).addPassenger(B);
         newTrain.carsAttached.get(0).removePassenger(A);
         System.out.println(newTrain.seatsRemaining());
-    } */
+    }
 }
